@@ -123,17 +123,19 @@
         top: 100%;
         left: 0;
         width: 100%;
-        height: 0;
         background: #004aad;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        overflow: hidden;
-        transition: height 0.3s ease;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
         z-index: 999;
+        padding: 20px 0;
       }
       #navbar #nav-menu.active {
-        height: 200px;
+        opacity: 1;
+        visibility: visible;
       }
       #navbar #nav-menu li {
         margin: 10px 0;
