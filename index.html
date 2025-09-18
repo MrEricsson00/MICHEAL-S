@@ -372,60 +372,60 @@
 
   <!-- JavaScript -->
   <script>
-    // Splash Screen Fade Out
+    // Splash Screen Fade Out and other JS
     window.addEventListener("load", function(){
       setTimeout(function(){
         document.getElementById("splash").classList.add("hidden");
       }, 800);
-    });
 
-    // Formspree AJAX Submit
-    const form = document.getElementById("contactForm");
-    const status = document.getElementById("formStatus");
+      // Formspree AJAX Submit
+      const form = document.getElementById("contactForm");
+      const status = document.getElementById("formStatus");
 
-    form.addEventListener("submit", async function(e) {
-      e.preventDefault(); // prevent redirect
+      form.addEventListener("submit", async function(e) {
+        e.preventDefault(); // prevent redirect
 
-      const data = new FormData(form);
-      try {
-        let response = await fetch(form.action, {
-          method: form.method,
-          body: data,
-          headers: { 'Accept': 'application/json' }
-        });
+        const data = new FormData(form);
+        try {
+          let response = await fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
 
-        if (response.ok) {
-          status.textContent = "✅ Thank you! Your message has been sent.";
-          status.className = "success";
-          status.style.display = "block";
-          form.reset();
-        } else {
-          status.textContent = "⚠️ Oops! Something went wrong. Try again.";
+          if (response.ok) {
+            status.textContent = "✅ Thank you! Your message has been sent.";
+            status.className = "success";
+            status.style.display = "block";
+            form.reset();
+          } else {
+            status.textContent = "⚠️ Oops! Something went wrong. Try again.";
+            status.className = "error";
+            status.style.display = "block";
+          }
+        } catch (error) {
+          status.textContent = "⚠️ Network error. Please try later.";
           status.className = "error";
           status.style.display = "block";
         }
-      } catch (error) {
-        status.textContent = "⚠️ Network error. Please try later.";
-        status.className = "error";
-        status.style.display = "block";
-      }
-    });
+      });
 
-    // Hamburger menu toggle
-    const hamburger = document.getElementById('hamburger');
-    const navMenu = document.getElementById('nav-menu');
+      // Hamburger menu toggle
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('nav-menu');
 
-    hamburger.addEventListener('click', function() {
-      navMenu.classList.toggle('active');
-      hamburger.classList.toggle('active');
-    });
+      hamburger.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
 
-    // Close menu when clicking a link (mobile)
-    navMenu.addEventListener('click', function(e) {
-      if (e.target.tagName === 'A') {
-        navMenu.classList.remove('active');
-        hamburger.classList.remove('active');
-      }
+      // Close menu when clicking a link (mobile)
+      navMenu.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          navMenu.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
     });
    </script>
 
