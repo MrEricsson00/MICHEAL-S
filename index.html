@@ -126,15 +126,12 @@
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        opacity: 0;
-        visibility: hidden;
-        transition: opacity 0.3s ease, visibility 0.3s ease;
+        display: none;
         z-index: 999;
         padding: 20px 0;
       }
       #navbar #nav-menu.active {
-        opacity: 1;
-        visibility: visible;
+        display: flex;
       }
       #navbar #nav-menu li {
         margin: 10px 0;
