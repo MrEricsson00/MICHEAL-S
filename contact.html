@@ -73,9 +73,15 @@
   <script>
     // Splash Screen Fade Out and other JS
     window.addEventListener("load", function(){
-      setTimeout(function(){
-        document.getElementById("splash").classList.add("hidden");
-      }, 800);
+      const splash = document.getElementById("splash");
+      if (localStorage.getItem("splashShown")) {
+        splash.classList.add("hidden");
+      } else {
+        setTimeout(function(){
+          splash.classList.add("hidden");
+          localStorage.setItem("splashShown", "true");
+        }, 800);
+      }
 
       // Formspree AJAX Submit
       const form = document.getElementById("contactForm");
