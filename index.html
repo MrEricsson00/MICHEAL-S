@@ -1,14 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Ribeiro Block Works</title>
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
- <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ribeiro Block Works</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
@@ -20,15 +20,14 @@
   <!-- Navbar -->
   <nav id="navbar">
     <div class="logo">
-      <!-- Replace "logo.png" with your file name -->
       <img src="michael/logo1.png" alt="Ribeiro Logo">
       <span>Ribeiro Block Works</span>
     </div>
     <ul id="nav-menu">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
     </ul>
     <button id="hamburger" class="hamburger" aria-label="Toggle menu">
       <span></span>
@@ -50,82 +49,9 @@
       <p class="fade-in-up">Affordable, durable, and trusted by builders everywhere. Quality blocks for every construction need.</p>
       <div class="cta-buttons">
         <a href="tel:+233244206820" class="slide-in-left">📞 Call Now</a>
-        <a href="#contact" class="slide-in-right">Get Quote</a>
+        <a href="contact.html" class="slide-in-right">Get Quote</a>
       </div>
     </div>
-  </section>
-
-  <!-- About Section -->
-  <section class="about" id="about">
-    <div class="container">
-      <h2>About Us</h2>
-      <p>Ribeiro Block Works has been a leading provider of high-quality concrete blocks in Ghana for over a decade. We specialize in manufacturing durable, affordable blocks that meet the highest standards for construction projects of all sizes.</p>
-      <p>Our commitment to excellence, reliability, and customer satisfaction has made us the trusted choice for builders, contractors, and homeowners across Cape Coast and beyond.</p>
-      <div class="stats">
-        <div class="stat">
-          <h3>10+</h3>
-          <p>Years of Experience</p>
-        </div>
-        <div class="stat">
-          <h3>1000+</h3>
-          <p>Projects Completed</p>
-        </div>
-        <div class="stat">
-          <h3>100%</h3>
-          <p>Quality Guarantee</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Services Section -->
-  <section class="services" id="services">
-    <h2>Our Services</h2>
-    <div class="service-list">
-      <div class="service">
-        <i class="fas fa-cubes"></i>
-        <h3>Block Manufacturing</h3>
-        <p>High-quality concrete blocks in various sizes for all your construction needs.</p>
-      </div>
-      <div class="service">
-        <i class="fas fa-truck"></i>
-        <h3>Delivery Services</h3>
-        <p>Reliable delivery to your site, ensuring timely project completion.</p>
-      </div>
-      <div class="service">
-        <i class="fas fa-tools"></i>
-        <h3>Custom Solutions</h3>
-        <p>Tailored block solutions for unique architectural requirements.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Contact Section -->
-  <section class="contact" id="contact">
-    <h2>Contact Us</h2>
-    <p>📍 Location: Cape Coast, Ghana</p>
-    <p>📞 Phone: <a href="tel:+233244206820">+233 244 206 820</a></p>
-    <p>✉️ Email: originaltribalchief@gmail.com</p>
-
-    <!-- Contact Form -->
-    <form id="contactForm" action="https://formspree.io/f/movnokeq" method="POST">
-      <label>Your Name</label><br>
-      <input type="text" name="name" required><br>
-
-      <label>Your Phone Number</label><br>
-      <input type="tel" name="phone" required pattern="[0-9]{10,15}" inputmode="numeric" placeholder="Enter your phone number"><br>
-
-      <label>Your Email</label><br>
-      <input type="email" name="email" required placeholder="Enter your email"><br>
-
-      <label>Comments</label><br>
-      <textarea name="message" rows="4" required></textarea><br>
-
-      <button type="submit">Send Message</button>
-    </form>
-
-    <!-- Success / Error Message -->
-    <p id="formStatus"></p>
   </section>
 
   <!-- Footer -->
@@ -135,43 +61,11 @@
 
   <!-- JavaScript -->
   <script>
-    // Splash Screen Fade Out and other JS
+    // Splash Screen Fade Out
     window.addEventListener("load", function(){
       setTimeout(function(){
         document.getElementById("splash").classList.add("hidden");
       }, 800);
-
-      // Formspree AJAX Submit
-      const form = document.getElementById("contactForm");
-      const status = document.getElementById("formStatus");
-
-      form.addEventListener("submit", async function(e) {
-        e.preventDefault(); // prevent redirect
-
-        const data = new FormData(form);
-        try {
-          let response = await fetch(form.action, {
-            method: form.method,
-            body: data,
-            headers: { 'Accept': 'application/json' }
-          });
-
-          if (response.ok) {
-            status.textContent = "✅ Thank you! Your message has been sent.";
-            status.className = "success";
-            status.style.display = "block";
-            form.reset();
-          } else {
-            status.textContent = "⚠️ Oops! Something went wrong. Try again.";
-            status.className = "error";
-            status.style.display = "block";
-          }
-        } catch (error) {
-          status.textContent = "⚠️ Network error. Please try later.";
-          status.className = "error";
-          status.style.display = "block";
-        }
-      });
 
       // Hamburger menu toggle
       const hamburger = document.getElementById('hamburger');
@@ -209,7 +103,7 @@
         observer.observe(section);
       });
     });
-   </script>
+  </script>
 
 </body>
 </html>

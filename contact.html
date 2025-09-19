@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - Ribeiro Block Works</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Splash Screen -->
+  <div id="splash">
+    <img src="michael/logo1.png" alt="Ribeiro Logo">
+  </div>
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="logo">
+      <img src="michael/logo1.png" alt="Ribeiro Logo">
+      <span>Ribeiro Block Works</span>
+    </div>
+    <ul id="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button id="hamburger" class="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- Contact Section -->
+  <section class="contact" id="contact">
+    <h2>Contact Us</h2>
+    <p>📍 Location: Cape Coast, Ghana</p>
+    <p>📞 Phone: <a href="tel:+233244206820">+233 244 206 820</a></p>
+    <p>✉️ Email: originaltribalchief@gmail.com</p>
+
+    <!-- Contact Form -->
+    <form id="contactForm" action="https://formspree.io/f/movnokeq" method="POST">
+      <label>Your Name</label><br>
+      <input type="text" name="name" required><br>
+
+      <label>Your Phone Number</label><br>
+      <input type="tel" name="phone" required pattern="[0-9]{10,15}" inputmode="numeric" placeholder="Enter your phone number"><br>
+
+      <label>Your Email</label><br>
+      <input type="email" name="email" required placeholder="Enter your email"><br>
+
+      <label>Comments</label><br>
+      <textarea name="message" rows="4" required></textarea><br>
+
+      <button type="submit">Send Message</button>
+    </form>
+
+    <!-- Success / Error Message -->
+    <p id="formStatus"></p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Ribeiro Block Works | Built to Last</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Splash Screen Fade Out and other JS
+    window.addEventListener("load", function(){
+      setTimeout(function(){
+        document.getElementById("splash").classList.add("hidden");
+      }, 800);
+
+      // Formspree AJAX Submit
+      const form = document.getElementById("contactForm");
+      const status = document.getElementById("formStatus");
+
+      form.addEventListener("submit", async function(e) {
+        e.preventDefault(); // prevent redirect
+
+        const data = new FormData(form);
+        try {
+          let response = await fetch(form.action, {
+            method: form.method,
+            body: data,
+            headers: { 'Accept': 'application/json' }
+          });
+
+          if (response.ok) {
+            status.textContent = "✅ Thank you! Your message has been sent.";
+            status.className = "success";
+            status.style.display = "block";
+            form.reset();
+          } else {
+            status.textContent = "⚠️ Oops! Something went wrong. Try again.";
+            status.className = "error";
+            status.style.display = "block";
+          }
+        } catch (error) {
+          status.textContent = "⚠️ Network error. Please try later.";
+          status.className = "error";
+          status.style.display = "block";
+        }
+      });
+
+      // Hamburger menu toggle
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('nav-menu');
+
+      hamburger.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+
+      // Close menu when clicking a link (mobile)
+      navMenu.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          navMenu.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Entrance animations on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-up');
+          }
+        });
+      }, observerOptions);
+
+      // Observe sections
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+
+</body>
+</html>

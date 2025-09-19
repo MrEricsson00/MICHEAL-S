@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About - Ribeiro Block Works</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Splash Screen -->
+  <div id="splash">
+    <img src="michael/logo1.png" alt="Ribeiro Logo">
+  </div>
+
+  <!-- Navbar -->
+  <nav id="navbar">
+    <div class="logo">
+      <img src="michael/logo1.png" alt="Ribeiro Logo">
+      <span>Ribeiro Block Works</span>
+    </div>
+    <ul id="nav-menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <button id="hamburger" class="hamburger" aria-label="Toggle menu">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </nav>
+
+  <!-- About Section -->
+  <section class="about" id="about">
+    <div class="container">
+      <h2>About Us</h2>
+      <p>Ribeiro Block Works has been a leading provider of high-quality concrete blocks in Ghana for over a decade. We specialize in manufacturing durable, affordable blocks that meet the highest standards for construction projects of all sizes.</p>
+      <p>Our commitment to excellence, reliability, and customer satisfaction has made us the trusted choice for builders, contractors, and homeowners across Cape Coast and beyond.</p>
+      <div class="stats">
+        <div class="stat">
+          <h3>10+</h3>
+          <p>Years of Experience</p>
+        </div>
+        <div class="stat">
+          <h3>1000+</h3>
+          <p>Projects Completed</p>
+        </div>
+        <div class="stat">
+          <h3>100%</h3>
+          <p>Quality Guarantee</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Ribeiro Block Works | Built to Last</p>
+  </footer>
+
+  <!-- JavaScript -->
+  <script>
+    // Splash Screen Fade Out
+    window.addEventListener("load", function(){
+      setTimeout(function(){
+        document.getElementById("splash").classList.add("hidden");
+      }, 800);
+
+      // Hamburger menu toggle
+      const hamburger = document.getElementById('hamburger');
+      const navMenu = document.getElementById('nav-menu');
+
+      hamburger.addEventListener('click', function() {
+        navMenu.classList.toggle('active');
+        hamburger.classList.toggle('active');
+      });
+
+      // Close menu when clicking a link (mobile)
+      navMenu.addEventListener('click', function(e) {
+        if (e.target.tagName === 'A') {
+          navMenu.classList.remove('active');
+          hamburger.classList.remove('active');
+        }
+      });
+
+      // Entrance animations on scroll
+      const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+      };
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('fade-in-up');
+          }
+        });
+      }, observerOptions);
+
+      // Observe sections
+      document.querySelectorAll('section').forEach(section => {
+        observer.observe(section);
+      });
+    });
+  </script>
+
+</body>
+</html>
